@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Square Off Chess</string>
+    <string name="name">Name</string>
+    <string name="main_image">main_image</string>
+    <string name="slug">Slug</string>
+    <string name="year">Year</string>
+    <string name="dash_count">Dash Count</string>
+    <string name="_10">10</string>
+    <string name="sample_text">sample text sample</string>
+    <string name="no_internet">No Internet !</string>
+</resources>
