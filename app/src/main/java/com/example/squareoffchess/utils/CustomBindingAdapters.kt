@@ -15,13 +15,12 @@ class CustomBindingAdapters {
         fun setImage(view: ImageView, url: String?) {
             Log.d("CustomBindingAdapter","url:$url")
             Picasso.get().cancelRequest(view)//clear last request
-            view.setImageDrawable(null)//clear imageView
             if (url.isNullOrEmpty()) {
                 view.setImageResource(R.drawable.ic_image_not_available)
             } else {
                 Picasso.get()
                     .load(url)
-                    .noFade()
+                    .fit()
                     .placeholder(R.drawable.progress_drawable)
                     .error(R.drawable.ic_something_went_wrong)
                     .into(view)
