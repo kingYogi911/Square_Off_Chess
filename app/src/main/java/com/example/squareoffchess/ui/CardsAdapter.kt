@@ -20,7 +20,10 @@ class CardsAdapter(private val list: List<Card>) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.binding.item = list[position]
+        holder.binding.apply{
+            this.item = list[position]
+            this.executePendingBindings()
+        }
     }
 
     override fun getItemCount(): Int = list.size

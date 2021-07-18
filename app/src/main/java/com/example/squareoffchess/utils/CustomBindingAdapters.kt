@@ -1,5 +1,7 @@
 package com.example.squareoffchess.utils
 
+import android.graphics.BitmapFactory
+import android.util.Log
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -11,15 +13,17 @@ class CustomBindingAdapters {
         @JvmStatic
         @BindingAdapter(value = ["url"],requireAll = true)
         fun setImage(view: ImageView, url: String?) {
+            Log.d("CustomBindingAdapter","url:$url")
+            Picasso.get().cancelRequest(view)//clear last request
+            view.setImageDrawable(null)//clear imageView
             if (url.isNullOrEmpty()) {
-                view.setImageDrawable(
-                    ContextCompat.getDrawable(view.context, R.drawable.ic_image_not_available)
-                )
+                view.setImageResource(R.drawable.ic_image_not_available)
             } else {
                 Picasso.get()
                     .load(url)
+                    .noFade()
                     .placeholder(R.drawable.progress_drawable)
-                    .error(R.drawable.ic_image_not_available)
+                    .error(R.drawable.ic_something_went_wrong)
                     .into(view)
             }
         }
